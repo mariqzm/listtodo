@@ -1,0 +1,422 @@
+/* style.css - Minimalism in the style of Malevich's Black Square */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  background: radial-gradient(circle at 20% 30%, #0a0a0a, #000000);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Основные блоки — квадраты */
+.screen {
+  background: #0a0a0a;
+  border: 2px solid #1a1a1a;
+  padding: 40px 30px;
+  display: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.screen.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Табы */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 12px 0;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ccff00, #a0ff00);
+  transition: width 0.3s ease;
+}
+
+.tab-btn:hover::after {
+  width: 100%;
+}
+
+.tab-btn.active {
+  color: #ccff00;
+}
+
+.tab-btn.active::after {
+  width: 100%;
+}
+
+/* Заголовки */
+h1, h2 {
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-size: 28px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  background: linear-gradient(135deg, #ffffff, #ccff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Формы */
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #888;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  background: #111111;
+  border: 1px solid #222;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ccff00;
+  background: #0a0a0a;
+  box-shadow: 0 0 0 1px rgba(204, 255, 0, 0.3);
+}
+
+/* Кнопки — минималистичные, но с ярким акцентом */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #111;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #ccff00, #a0ff00);
+  color: #000000;
+  font-weight: 500;
+  border: none;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(204, 255, 0, 0.4);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid #333;
+  color: #aaa;
+}
+
+.btn.secondary:hover {
+  border-color: #ccff00;
+  color: #ccff00;
+  background: rgba(204, 255, 0, 0.05);
+}
+
+/* Заголовок с задачами */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#userNameDisplay {
+  color: #ccff00;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Форма добавления задачи */
+.add-task-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.add-task-form input {
+  flex: 1;
+}
+
+.add-task-form .btn {
+  width: auto;
+  padding: 14px 24px;
+}
+
+/* Список задач — квадраты Малевича */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-item {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.task-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(135deg, #ccff00, #a0ff00);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.task-item:hover::before {
+  transform: scaleY(1);
+}
+
+.task-item:hover {
+  border-color: #ccff00;
+  transform: translateX(5px);
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #ccff00;
+}
+
+.task-title {
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.edit-btn {
+  color: #ccff00;
+}
+
+.delete-btn {
+  color: #ff4444;
+}
+
+/* Режим редактирования */
+.edit-mode {
+  background: #111111;
+}
+
+.edit-input {
+  background: #000;
+  border: 1px solid #ccff00;
+  padding: 8px;
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.save-btn {
+  background: #ccff00;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  background: #a0ff00;
+  transform: scale(1.05);
+}
+
+/* Сообщения об ошибках */
+.error-message {
+  margin-top: 20px;
+  padding: 12px;
+  background: rgba(255, 68, 68, 0.1);
+  border-left: 3px solid #ff4444;
+  color: #ff8888;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .screen {
+    padding: 25px 20px;
+  }
+  
+  .add-task-form {
+    flex-direction: column;
+  }
+  
+  .add-task-form .btn {
+    width: 100%;
+  }
+  
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .task-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  h1, h2 {
+    font-size: 24px;
+  }
+}
+
+/* Стили для пустого состояния */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #333;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Кастомный скролл */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccff00;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0ff00;
+}
